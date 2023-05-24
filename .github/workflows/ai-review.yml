@@ -1,0 +1,16 @@
+name: Use AI to review
+on:
+  pull_request:
+    types: [labeled]
+    
+
+jobs:
+  review:
+    name: let ai review
+    runs-on: ubuntu-latest-kong
+
+    steps:
+    - name: review
+      if: ${{ github.event.pull_request.label.name == 'ai-review' }}
+      run: >
+        echo "hello world";
